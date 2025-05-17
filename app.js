@@ -6,25 +6,41 @@ function performOperation() {
   let result;
 
   if (isNaN(num1) || isNaN(num2)) {
-    result = 'Please enter valid numbers.';
+    result = '⚠️ Please enter valid numbers.';
   } else {
+    let calculation;
+
     switch (operation) {
       case 'add':
-        result = `The result is: ${num1 + num2}`;
+        calculation = num1 + num2;
         break;
       case 'subtract':
-        result = `The result is: ${num1 - num2}`;
+        calculation = num1 - num2;
         break;
       case 'multiply':
-        result = `The result is: ${num1 * num2}`;
+        calculation = num1 * num2;
         break;
       case 'divide':
-        result = num2 !== 0 ? `The result is: ${num1 / num2}` : 'Cannot divide by zero';
+        if (num2 === 0) {
+          result = '❌ Cannot divide by zero.';
+        } else {
+          calculation = num1 / num2;
+        }
         break;
       default:
         result = 'Please select an operation.';
     }
+
+    if (calculation !== undefined) {
+      // Format result: add commas and limit to 2 decimal places
+      const formatted = calculation.toLocaleString(undefined, {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      });
+
+      result = `✅ The result is: <strong>${formatted}</strong>`;
+    }
   }
 
-  document.getElementById('result').innerText = result;
+  document.getElementById('result').innerHTML = result;
 }

@@ -46,3 +46,12 @@ button {
   margin: 5px;
   font-size: 16px;
 }
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #007b5e;
+  background-color: #e9f9f5;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 123, 94, 0.2);
+}
